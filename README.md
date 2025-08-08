@@ -1,4 +1,5 @@
-About
+**About
+**
 
 A simple Notes App backend using Spring Boot and Basic Auth integrating PostgreSQL.
 
