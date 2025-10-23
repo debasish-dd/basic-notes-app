@@ -9,12 +9,19 @@ export const useStore = create((set)=>({
 
 }))
 
-export const useTodoStore = create(persist((set,get)=>({
-    todos: [],
-    createTodo: (payload)=>(
-        set((s)=>({
-            todos: [{createdAt: Date.now() , ...payload}, ...s.todos]
+export const useTodoStore = create(
+  persist(
+    (set, get) => ({
+      todos: [],
+      createTodo: payload =>
+        set(s => ({
+          todos: [{ createdAt: Date.now(), ...payload }, ...s.todos],
+        })),
+        updateTodo: payload => set(s=>({
+            todos: [...payload]
         }))
-    )
-}))) 
+    }),
+    { name: 'todo-storage' } 
+  )
+);
 
