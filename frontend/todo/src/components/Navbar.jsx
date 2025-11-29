@@ -28,6 +28,7 @@ function Navbar() {
                 Add Todo
             </Link>
         </header>
+        
     )
 }
 
