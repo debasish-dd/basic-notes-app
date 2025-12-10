@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useStore } from '../store/Store'
+
+
 function Landing() {
 
   const submitHandler = (e) => {
     e.preventDefault()
   }
   
-  const [isLogin, setIsLogin] = useState(false)
-  const { themeColor } = useStore()
+  const { themeColor, isLogin, updateIsLogin } = useStore()
 
   return (
     <div>
@@ -23,24 +24,24 @@ function Landing() {
           {/* Name */}
           {!isLogin && <div>
             <label className='block text-sm font-medium'>Full Name</label>
-            <input className='m-2 bg-stone-200 text-black placeholder:text-black/50 p-1.5 rounded' type='name' placeholder='name' />
+            <input className='m-2 bg-stone-200 w-80 text-black placeholder:text-black/50 p-1.5 rounded' type='name' placeholder='name' />
           </div>}
           
           {/* email */}
           <div>
             <label className='block text-sm font-medium'>Email Address</label>
-            <input className='m-2 bg-stone-200 text-black placeholder:text-black/50 p-1.5 rounded' type='email' placeholder='email' />
+            <input className='m-2 bg-stone-200 text-black w-80 placeholder:text-black/50 p-1.5 rounded' type='email' placeholder='email' />
           </div>
 
         {/* password */}
           <div>
             <label className='block text-sm font-medium'>Password</label>
-            <input className='m-2 bg-stone-200 text-black placeholder:text-black/50 p-1.5 rounded' type='password' placeholder='password' />
+            <input className='m-2 bg-stone-200 w-80 text-black placeholder:text-black/50 p-1.5 rounded' type='password' placeholder='password' />
           </div>
           {/* Confirm password */}
             {!isLogin && <div>
             <label className='block text-sm font-medium'>Confirm Password</label>
-            <input className='m-2 bg-stone-200 text-black placeholder:text-black/50 p-1.5 rounded' type='password' placeholder='password' />
+            <input className='m-2 bg-stone-200 w-80 text-black placeholder:text-black/50 p-1.5 rounded' type='password' placeholder='password' />
           </div>}
           
               {/* submit btn */}
@@ -51,7 +52,7 @@ function Landing() {
             {isLogin? 'Don not have an account?': 'Already have an account?'}
             </p>
              <button
-            onClick={() => setIsLogin(!isLogin)}
+            onClick={() => updateIsLogin(!isLogin)}
              className='text-center font-bold cursor-pointer text-blue-400'> {isLogin? 'Sign up' : 'Sign in'}</button>
         </div>
 
@@ -80,6 +81,11 @@ function Landing() {
             <span className="text-sm font-medium text-gray-700">GitHub</span>
           </button>
         </div>
+
+      </div>
+
+      {/* right side image section */}
+      <div>
 
       </div>
     </div>

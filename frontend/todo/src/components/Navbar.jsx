@@ -3,13 +3,14 @@ import { useStore } from '../store/Store'
 import { Link, Outlet } from 'react-router-dom'
 
 function Navbar() {
-    const { themeColor, updateThemeColor } = useStore()
+    const { themeColor, updateThemeColor, updateIsLogin } = useStore()
 
     const themeToggler = (e) => {
         updateThemeColor(e.target.checked)
     }
     return (
-        <header className={`${themeColor ? "bg-stone-900" : 'bg-lime-200'} w-full h-20 p-5 flex items-center justify-between shadow`}>
+        <header className={`${themeColor ? "bg-stone-900" : 'bg-lime-200'} w-full h-20 p-5 flex items-center justify-around shadow`}>
+
             <label className="relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-neutral-700">
                 <input
                     defaultChecked
@@ -23,12 +24,23 @@ function Navbar() {
 
             <Link
                 to="/create-todo"
-                className={`${themeColor ? 'bg-neutral-800 hover:bg-stone-900 focus:outline-2 focus:outline-offset-1 focus:outline-gray-400' : "bg-lime-800 hover:bg-lime-900 focus:outline-1 focus:outline-offset-1 focus:outline-emerald-900"} text-white p-3 m-3 rounded-xl cursor-pointer`}
+                className={`${themeColor ? 'bg-neutral-800 hover:bg-stone-900 focus:outline-2 focus:outline-offset-1 focus:outline-gray-400' : "bg-lime-800 hover:bg-lime-900 focus:outline-1 focus:outline-offset-1 focus:outline-emerald-900"} text-white p-1.5 m-3 rounded-lg cursor-pointer`}
                 type="button" >
                 Add Todo
             </Link>
+
+            <div className='flex gap-6'>
+                <Link
+                    to={''}
+                    onClick={updateIsLogin(true)}
+                    className={`${themeColor ? 'bg-neutral-800 hover:bg-stone-900 focus:outline-2 focus:outline-offset-1 focus:outline-gray-400' : "bg-lime-800 hover:bg-lime-900 focus:outline-1 focus:outline-offset-1 focus:outline-emerald-900"} text-white p-1 rounded cursor-pointer`}>Login</Link>
+                <Link
+                    to={''}
+                    onClick={updateIsLogin(false)}
+                    className={`${themeColor ? 'bg-neutral-800 hover:bg-stone-900 focus:outline-2 focus:outline-offset-1 focus:outline-gray-400' : "bg-lime-800 hover:bg-lime-900 focus:outline-1 focus:outline-offset-1 focus:outline-emerald-900"} text-white p-1 rounded cursor-pointer`}>Sign Up</Link>
+            </div>
         </header>
-        
+
     )
 }
 

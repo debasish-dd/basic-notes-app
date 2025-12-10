@@ -5,7 +5,9 @@ import { persist } from "zustand/middleware";
 
 export const useStore = create((set)=>({
     themeColor: true,
-    updateThemeColor: (val) => set({themeColor: val})
+    updateThemeColor: (val) => set({themeColor: val}),
+    isLogin: false,
+    updateIsLogin: (val) => set({isLogin: val})
 
 }))
 
