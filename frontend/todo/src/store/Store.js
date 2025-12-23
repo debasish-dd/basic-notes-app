@@ -13,15 +13,29 @@ export const useTodoStore = create(
   persist(
     (set, get) => ({
       todos: [],
+
       createTodo: payload =>
         set(s => ({
-          todos: [{ createdAt: Date.now(), ...payload }, ...s.todos],
+          todos: [
+            { id: crypto.randomUUID(), createdAt: Date.now(), ...payload },
+            ...s.todos
+          ]
         })),
-        updateTodo: payload => set(s=>({
-            todos: [...payload]
+
+      deleteTodo: id =>
+        set(s => ({
+          todos: s.todos.filter(t => t.id !== id)
+        })),
+
+      updateTodo: (id, updates) =>
+        set(s => ({
+          todos: s.todos.map(t =>
+            t.id === id ? { ...t, ...updates } : t
+          )
         }))
     }),
-    { name: 'todo-storage' } 
+    { name: 'todo-storage' }
   )
-);
+)
+
 

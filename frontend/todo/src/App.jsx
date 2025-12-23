@@ -2,7 +2,7 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import { useStore } from './store/Store.js'
 import CreateTodo from './components/CreateTodo.jsx';
-import Landing from './components/Landing.jsx'
+import Landing from './components/Todo.jsx'
 import Layout from './Layout.jsx';
 
 
